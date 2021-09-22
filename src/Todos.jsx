@@ -13,17 +13,21 @@ const Todos = () => {
     });
   }, []);
 
+  /*  .then() is a synchronous function .
+   in synchronous every thing happens in sequence 
+   so every statement of the code gets executed one by one
+ */
   console.log(todos);
   return (
     <>
       {todos ? (
-        <div>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
           {todos.slice(0, 10).map((todo) => (
-            <TodoCard todo={todo} />
+            <TodoCard key={todo.id} todo={todo} />
           ))}
         </div>
       ) : (
-        <CircularProgress />
+        <CircularProgress /> //from materiel ui for loading
       )}
     </>
   );
