@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
+import TodoCard from "./TodoCard";
 
 const Todos = () => {
   const [todos, setTodos] = useState();
@@ -17,15 +18,9 @@ const Todos = () => {
     <>
       {todos ? (
         <div>
-          {todos.map((todo) => {
-            const { title, completed } = todo;
-            return (
-              <div>
-                <h4>{title}</h4>
-                <h6>{completed}</h6>
-              </div>
-            );
-          })}
+          {todos.slice(0, 10).map((todo) => (
+            <TodoCard todo={todo} />
+          ))}
         </div>
       ) : (
         <CircularProgress />
